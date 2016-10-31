@@ -21,6 +21,12 @@ Mongo.Collection.get = function(name, options) {
 };
 
 Mongo.Collection.getAll = function() {
+  instances.forEach(function (instance) {
+    if (!instance.name && instance.instance._name) {
+      instance.name = instance.instance._name;
+    }
+  });
+
   return instances;
 };
 
